@@ -1,3 +1,4 @@
+import java.util.Scanner;
 import java.sql.*;
 
 public class StudentManager {
@@ -105,6 +106,7 @@ public class StudentManager {
 
     // Video test
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
         StudentManager manager = new StudentManager();
         
         // Test getAllStudents()
@@ -112,17 +114,37 @@ public class StudentManager {
         manager.getAllStudents();
         
         // Test addStudent()
-        manager.addStudent("Jimmy", "Johnson", "jimmy.johnson@example.com", Date.valueOf("2023-09-29"));
+        System.out.println("Adding a new student:");
+        System.out.print("Enter first name: ");
+        String firstName = scanner.nextLine();
+        System.out.print("Enter last name: ");
+        String lastName = scanner.nextLine();
+        System.out.print("Enter email: ");
+        String email = scanner.nextLine();
+        System.out.print("Enter birthdate (YYYY-MM-DD): ");
+        String birthdateStr = scanner.nextLine();
+        Date birthdate = Date.valueOf(birthdateStr);
+        manager.addStudent(firstName, lastName, email, birthdate);
         
         // Test updateStudentEmail()
-        manager.updateStudentEmail(10, "john.updated@example.com");
+        System.out.println("Updating student email:");
+        System.out.print("Enter student ID: ");
+        int studentId = Integer.parseInt(scanner.nextLine());
+        System.out.print("Enter new email: ");
+        String newEmail = scanner.nextLine();
+        manager.updateStudentEmail(studentId, newEmail);
         
         // Test deleteStudent()
-        manager.deleteStudent(12);
+        System.out.println("Deleting a student:");
+        System.out.print("Enter student ID to delete: ");
+        int idToDelete = Integer.parseInt(scanner.nextLine());
+        manager.deleteStudent(idToDelete);
         
-        // final check after changes
+        // Final check after changes
+        System.out.println("Final list of students:");
         manager.getAllStudents();
         
         manager.closeConnection();
+        scanner.close();
     }
 }
