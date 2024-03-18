@@ -1,4 +1,4 @@
-# HundeyJavaDB
+# JavaDB
 Steps for running the program:
 1. Head to [https://jdbc.postgresql.org/download/](https://jdbc.postgresql.org/download/) to get the JAR file used to connect JDBC to the PostgreSQL database.
 2. Install the Java extension in VSCode to compile and run Java code.
